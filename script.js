@@ -1,11 +1,22 @@
 let counter = 0
 let element = document.querySelector('body div.container')
-let animate = setInterval(translateToTheRight, 10)
+let elementWidth = element.offsetWidth
+counter = elementWidth
+element.style.transform = 'translateX(' + elementWidth + 'px)'
+let animate = setInterval(translateToLeft, 10)
 
-function translateToTheRight(){
-  if(window.innerWidth == counter) {
-    clearInterval(animate)
+function translateToLeft() {
+  element.style.transform = 'translateX(' + counter + 'px)'
+  counter--
+  if(counter < 0 && -window.innerWidth == counter) {
+    goToRight()
   }  
-  element.style.transform = 'translate(-' + counter + 'px, 0)'
-  counter++
+
+}
+
+function goToRight() {
+    clearInterval(animate)
+    element.style.transform = 'translateX(' + elementWidth+ 'px)'
+    counter = elementWidth
+    animate = setInterval(translateToLeft, 10)
 }
