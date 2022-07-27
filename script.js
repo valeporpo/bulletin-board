@@ -1,27 +1,40 @@
 let counter = 0, animate
-let element = document.querySelector('body div.container')
-let elementWidth = element.offsetWidth
+let container = document.querySelector('body div.container')
+let element = document.querySelector('body div.container div.contained')
 
 startAnimation()
 
+// Trasla di un pixel verso sx
 function translateToLeft() {
-  setTranslateX(counter)
+  setTranslateX(element, counter)
   counter--
-  if(counter < 0 && -window.innerWidth == counter) {
+  
+  // Se translateX (in negativo) è pari alla larghezza del padre
+  if(getTranslateX(element) == -container.offsetWidth) {
     goToRight()
   }
+
 }
 
+// Resetta
 function goToRight() {
     clearInterval(animate)
-    setTranslateX(elementWidth)
-    counter = elementWidth
+    // Trasla l'elemento verso dx, in modo che inizi nel punto
+    // dove finisce il padre
+    counter = element.offsetWidth
+    setTranslateX(element, counter)
     animate = setInterval(translateToLeft, 10)
 }
 
-function setTranslateX(px) {
-   element.style.transform = 'translateX(' + px + 'px)'
+function setTranslateX(el, px) {
+   el.style.transform = 'translateX(' + px + 'px)'
 }
+
+function getTranslateX(el) {
+    let style = window.getComputedStyle(el)
+    let matrix = new WebKitCSSMatrix(style.transform)
+    return matrix.m41
+ }
 
 function startAnimation() {
     goToRight()

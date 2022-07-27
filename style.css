@@ -1,8 +1,48 @@
-div.container {
-    display: inline-block;
-    position: absolute;
-    right: 0;
-    border: 1px solid black;
-    padding: 2px;
-    transform: translate(-50px, 0);
+html {
+
+    overflow-x: hidden;
+
+}
+
+body {
+    background-color: white;
+    padding: 0;
+    margin: 0;
+}
+
+body > div.main {
+
+    background-color: inherit;
+
+}
+
+body > div.main > div.aside {
+
+    position: relative;
+    width: 20%;
+    background-color: inherit;
+    z-index: 2;
+    height: 50px;
+    float: left;
+
+}
+
+body > div.main > div.container {
+
+    width: 60%;
+    z-index: -1;
+    position: relative;
+    height: 50px;
+    float: left;
+
+}
+
+body > div.main > div.container > div.contained {
+
+    float: right;
+    position: relative;
+    line-height: 50px;
+    background-color: inherit;
+    white-space: nowrap;
+
 }
