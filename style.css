@@ -1,11 +1,5 @@
 @import url('https://fonts.googleapis.com/css2?family=Monoton&family=Warnes&display=swap');
 
-html {
-
-
-
-}
-
 body {
     background-color: white;
     padding: 0;
@@ -17,7 +11,8 @@ body {
 body > div.main {
 
     background-color: inherit;
-    font-size: 50px;
+    /*font-size: 50px;*/
+    font-size: calc(40px + 1.4vw);
     word-spacing: 10px;
     position: relative;
     top: 30%;
@@ -57,4 +52,49 @@ body > div.main > div.container > div.contained {
     font-family: 'Monoton', cursive;
     visibility: hidden;
 
+}
+
+@media only screen and (max-width: 1200px) {
+
+    body > div.main > div.aside {
+
+        width: 15%;
+
+    }
+    
+    body > div.main > div.container {
+    
+        width: 70%;
+    
+    }
+}
+
+@media only screen and (max-width: 800px) {
+
+    body > div.main > div.aside {
+
+        width: 10%;
+
+    }
+    
+    body > div.main > div.container {
+    
+        width: 80%;
+    
+    }
+}
+
+@media only screen and (max-width: 414px) {
+
+    body > div.main > div.aside {
+
+        width: 5%;
+
+    }
+    
+    body > div.main > div.container {
+    
+        width: 90%;
+    
+    }
 }
